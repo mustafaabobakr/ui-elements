@@ -1,0 +1,153 @@
+@tailwind utilities;
+
+@layer utilities {
+	.title3xl,
+	.title3xl > * {
+		@apply font-lightBold leading-100 !important;
+		@apply sm:text-48 !important;
+		@apply md:text-72 !important;
+		@apply lg:text-120 xl:text-120 2xl:text-120 !important;
+		/* in Figma it is -1% === -0.01em em is related to element font-size so 0.01em=== 1% of font-size */
+		@apply -tracking-[0.01em] !important;
+	}
+
+	.title2xl,
+	.title2xl > * {
+		@apply leading-100 font-[650] !important;
+		@apply sm:text-36 !important;
+		@apply md:text-56 !important;
+		@apply lg:text-80 xl:text-80 2xl:text-80 !important;
+	}
+
+	.titleXl,
+	.titleXl > * {
+		@apply leading-120 font-medium !important;
+		@apply sm:text-28 !important;
+		@apply md:text-28 !important;
+		@apply lg:text-28 xl:text-28 2xl:text-28 !important;
+	}
+
+	.titleLg,
+	.titleLg > * {
+		@apply font-medium leading-110 !important;
+		@apply sm:text-28 sm:leading-120 !important;
+		@apply md:text-36 !important;
+		@apply lg:text-40 xl:text-40 2xl:text-40 !important;
+	}
+
+	.titleMd,
+	.titleMd > * {
+		@apply font-medium leading-130 !important;
+		@apply sm:text-18 !important;
+		@apply md:text-24 !important;
+		@apply lg:text-24 xl:text-24 2xl:text-24 !important;
+		/* in Figma it is -1% === -0.01em em is related to element font-size so 0.01em=== 1% of font-size */
+		@apply sm:-tracking-[0.01em] lg:-tracking-[0.01em] xl:-tracking-[0.01em] 2xl:-tracking-[0.01em] !important;
+	}
+	.titleMd_Bold,
+	.titleMd_Bold > * {
+		@apply font-bold leading-130 !important;
+		@apply sm:text-18 !important;
+		@apply md:text-24 !important;
+		@apply lg:text-24 xl:text-24 2xl:text-24 !important;
+		/* in Figma it is -1% === -0.01em em is related to element font-size so 0.01em=== 1% of font-size */
+		@apply sm:-tracking-[0.01em] lg:-tracking-[0.01em] xl:-tracking-[0.01em] 2xl:-tracking-[0.01em] !important;
+	}
+
+	.bodyLg,
+	.bodyLg > * {
+		@apply font-medium leading-130 !important;
+		@apply sm:text-16 !important;
+		@apply md:text-18 !important;
+		@apply lg:text-18 xl:text-18 2xl:text-18 !important;
+	}
+	.bodyLg_Bold,
+	.bodyLg_Bold > * {
+		@apply font-bold leading-130 !important;
+		@apply sm:text-16 !important;
+		@apply md:text-18 !important;
+		@apply lg:text-18 xl:text-18 2xl:text-18 !important;
+	}
+	.bodyMd,
+	.bodyMd > * {
+		@apply font-medium leading-130 !important;
+		@apply sm:text-14 !important;
+		@apply md:text-16 !important;
+		@apply lg:text-16 xl:text-16 2xl:text-16 !important;
+	}
+	.bodySm,
+	.bodySm > * {
+		@apply text-14 font-medium leading-130 !important;
+		@apply sm:text-12 !important;
+	}
+
+	.linkLg,
+	.linkLg > * {
+		@apply font-bold leading-100 !important;
+		@apply sm:text-18 sm:font-semiBold !important;
+		@apply md:text-20 !important;
+		@apply lg:text-20 xl:text-20 2xl:text-20 !important;
+	}
+	.linkMd,
+	.linkMd > * {
+		@apply font-semiBold leading-100 !important;
+		@apply sm:text-16 !important;
+		@apply md:text-18 !important;
+		@apply lg:text-18 xl:text-18 2xl:text-18 !important;
+	}
+	.linkMd_Bold,
+	.linkMd_Bold > * {
+		@apply font-bold leading-100 !important;
+		@apply sm:text-16 !important;
+		@apply md:text-18 !important;
+		@apply lg:text-18 xl:text-18 2xl:text-18 !important;
+	}
+	.linkSm,
+	.linkSm > * {
+		@apply text-12 font-normal leading-120 !important;
+	}
+	.linkSm_Bold,
+	.linkSm_Bold > * {
+		@apply text-12 font-semiBold leading-120 !important;
+	}
+	.linkSmd,
+	.linkSmd > * {
+		@apply text-15 font-semiBold leading-100 !important;
+	}
+
+	.navItem,
+	.navItem > * {
+		@apply text-13 font-normal leading-100 !important;
+	}
+	.navItem_Bold,
+	.navItem_Bold > * {
+		@apply text-13 font-bold leading-100 !important;
+	}
+
+	.tagSm,
+	.tagSm > * {
+		@apply text-12 font-semiBold leading-120 !important;
+		@apply sm:text-10 !important;
+	}
+	.tagSm_Bold,
+	.tagSm_Bold > * {
+		@apply text-12 font-semiBold leading-120 !important;
+		@apply sm:text-10 !important;
+		/* in Figma it is 8% === 0.08em em is related to element font-size so 0.08em=== 8% of font-size */
+		@apply tracking-[0.08em] !important;
+	}
+	.tagXs,
+	.tagXs > * {
+		@apply text-10 font-normal leading-120 !important;
+	}
+	.tagXs_Bold,
+	.tagXs_Bold > * {
+		@apply text-10 font-bold leading-120 !important;
+	}
+	.tagXs_Semi,
+	.tagXs_Semi > * {
+		@apply text-10 font-semiBold leading-120 !important;
+		/* in Figma it is 8% === 0.08em em is related to element font-size so 0.08em=== 8% of font-size */
+		@apply tracking-[0.08em] !important;
+	}
+}

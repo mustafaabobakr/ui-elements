@@ -3,25 +3,80 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+body {
+	cursor: default;
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+	min-height: 100vh;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	--geist-foreground: #000;
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0px, var(--geist-foreground) 50%);
+}
+.App {
+	font-family: sans-serif;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.gradient-text-shine {
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: shine 10s linear infinite;
+	animation: shine 10s linear infinite;
+	background: linear-gradient(90deg, #f5b3b3, #e6ace9, #c4b6ff, #a4dcad, #f1b3d9, #f1dea7);
+	background-clip: text;
+	-webkit-background-clip: text;
+	background-size: 200% auto;
+}
+/* White gradiet Text */
+h1,
+h2,
+p,
+.txtGrad {
+	--tw-gradient-from: #fff;
+	--tw-gradient-to: #aaa;
+	--tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+	-webkit-background-clip: text;
+	color: transparent;
+	background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+h1 {
+	display: block;
+	font-size: 2em;
+	margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+h2 {
+	display: block;
+	font-size: 1.5em;
+	margin-block-start: 0.83em;
+	margin-block-end: 0.83em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+}
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
 }
