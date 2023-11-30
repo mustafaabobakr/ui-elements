@@ -17,7 +17,7 @@
 	"dependencies": {
 		"axios": "^1.6.2",
 		"lottie-web": "^5.12.2",
-		"next": "^13.5.2",
+		"next": "^14.0.3",
 		"nprogress": "^0.2.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
@@ -26,16 +26,16 @@
 		"usehooks-ts": "^2.9.1"
 	},
 	"devDependencies": {
-		"@types/node": "^20.6.3",
+		"@types/node": "^20.10.1",
 		"@types/nprogress": "^0.2.3",
-		"@types/react": "^18.2.22",
-		"@types/react-dom": "^18.2.7",
+		"@types/react": "^18.2.39",
+		"@types/react-dom": "^18.2.17",
 		"@types/ua-parser-js": "^0.7.39",
 		"autoprefixer": "^10.4.16",
-		"eslint": "^8.49.0",
-		"eslint-config-next": "^13.5.2",
-		"postcss": "^8.4.30",
-		"tailwindcss": "^3.3.3",
-		"typescript": "^5.2.2"
+		"eslint": "^8.54.0",
+		"eslint-config-next": "^14.0.3",
+		"postcss": "^8.4.31",
+		"tailwindcss": "^3.3.5",
+		"typescript": "^5.3.2"
 	}
 }
