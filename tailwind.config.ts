@@ -253,31 +253,33 @@ const config: Config = {
 		textColor: ["dark", "dark-hover", "dark-active", "dark-placeholder"],
 	},
 	plugins: [
+		// @ts-ignore
 		function ({ matchUtilities, theme }) {
 			matchUtilities(
 				{
-					mbs: (value) => ({
+					mbs: (value: number) => ({
 						"margin-block-start": value,
 					}),
-					mbe: (value) => ({
+					mbe: (value: number) => ({
 						"margin-block-end": value,
 					}),
-					pbs: (value) => ({
+					pbs: (value: number) => ({
 						"padding-block-start": value,
 					}),
-					pbe: (value) => ({
+					pbe: (value: number) => ({
 						"padding-block-end": value,
 					}),
-					start: (value) => ({
+					start: (value: number) => ({
 						"inset-inline-start": value,
 					}),
-					end: (value) => ({
+					end: (value: number) => ({
 						"inset-inline-end": value,
 					}),
 				},
 				{ values: theme("spacing") }
 			);
 		},
+		// @ts-ignore
 		function ({ addUtilities }) {
 			addUtilities({
 				".container": {
@@ -290,11 +292,13 @@ const config: Config = {
 				},
 			});
 		},
+		// @ts-ignore
 		function ({ addBase, theme }) {
+			// @ts-ignore
 			function extractColorVars(colorObj, colorGroup = "") {
 				return Object.keys(colorObj).reduce((vars, colorKey) => {
 					const value = colorObj[colorKey];
-
+					// @ts-ignore
 					const newVars =
 						typeof value === "string"
 							? { [`--color${colorGroup}-${colorKey}`]: value }
@@ -303,10 +307,11 @@ const config: Config = {
 					return { ...vars, ...newVars };
 				}, {});
 			}
+			// @ts-ignore
 			function extractZIndexVars(zIndexObj, zIndexGroup = "") {
 				return Object.keys(zIndexObj).reduce((vars, zIndexKey) => {
 					const value = zIndexObj[zIndexKey];
-
+					// @ts-ignore
 					const newVars =
 						typeof value === "string"
 							? { [`--zIndex${zIndexGroup}-${zIndexKey}`]: value }

@@ -1,6 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback, memo, useRef, ElementRef, MouseEvent } from "react";
-import styles from "./CardHovered.module.css";
+import { useCallback, memo, useRef, ElementRef, MouseEvent } from "react";
 
 interface CardHoveredProps extends React.HTMLAttributes<HTMLElement> {}
 const CardHovered: React.FC<CardHoveredProps> = ({ ...props }: CardHoveredProps) => {

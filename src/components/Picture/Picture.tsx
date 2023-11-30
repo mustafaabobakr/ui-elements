@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState, memo, useCallback, CSSProperties } from "react";
 import NextImage, { ImageProps, StaticImageData } from "next/image";
-import { placeholderImage } from "./picture";
+import { placeholderImage } from "./utils";
 
 interface StaticRequire {
 	default: StaticImageData;

@@ -45,7 +45,7 @@ const IndeterminateCheckbox: React.FC<IndeterminateCheckboxProps> = ({
 				onChange={handleChange}
 				ref={(el) => el && (el.indeterminate = indeterminate)}
 			/>
-			<Typography as={"span"} variant={"bodySm"}>
+			<Typography tag={"span"} variant={"bodySm"}>
 				{label}
 			</Typography>
 		</label>

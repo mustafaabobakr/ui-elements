@@ -2,6 +2,11 @@
 	"name": "ui-elements",
 	"version": "0.1.0",
 	"private": true,
+	"author": {
+		"name": "Mostafa Abobakr",
+		"email": "mostafaabobakr.dev@gmail.com",
+		"url": "https://mostafaabobakr.com"
+	},
 	"scripts": {
 		"dev": "next dev -p 3007",
 		"build": "next build",
@@ -10,14 +15,22 @@
 		"init": "pnpm i --force"
 	},
 	"dependencies": {
+		"axios": "^1.6.2",
+		"lottie-web": "^5.12.2",
 		"next": "^13.5.2",
+		"nprogress": "^0.2.0",
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"react-use": "^17.4.1",
+		"ua-parser-js": "^1.0.37",
+		"usehooks-ts": "^2.9.1"
 	},
 	"devDependencies": {
 		"@types/node": "^20.6.3",
+		"@types/nprogress": "^0.2.3",
 		"@types/react": "^18.2.22",
 		"@types/react-dom": "^18.2.7",
+		"@types/ua-parser-js": "^0.7.39",
 		"autoprefixer": "^10.4.16",
 		"eslint": "^8.49.0",
 		"eslint-config-next": "^13.5.2",
