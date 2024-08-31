@@ -1,24 +1,21 @@
 "use client";
-import { useCallback, memo, useRef, ElementRef, MouseEvent } from "react";
+import { type ElementRef, type MouseEvent, memo, useCallback, useRef } from "react";
 
 interface CardHoveredProps extends React.HTMLAttributes<HTMLElement> {}
 const CardHovered: React.FC<CardHoveredProps> = ({ ...props }: CardHoveredProps) => {
 	const cardRef = useRef<ElementRef<"article">>(null);
 	const bgRef = useRef<ElementRef<"div">>(null);
 
-	const handleCardMouseMove = useCallback(
-		(e: MouseEvent<HTMLDivElement>) => {
-			if (!bgRef.current || !cardRef.current) return;
-			let { left, top } = cardRef.current.getBoundingClientRect();
-			let x = `${e.clientX - left}px`;
-			let y = `${e.clientY - top}px`;
-			cardRef.current.style.setProperty("--cursor-x", x);
-			cardRef.current.style.setProperty("--cursor-y", y);
-			bgRef.current.style.setProperty("top", y);
-			bgRef.current.style.setProperty("left", x);
-		},
-		[cardRef]
-	);
+	const handleCardMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
+		if (!bgRef.current || !cardRef.current) return;
+		const { left, top } = cardRef.current.getBoundingClientRect();
+		const x = `${e.clientX - left}px`;
+		const y = `${e.clientY - top}px`;
+		cardRef.current.style.setProperty("--cursor-x", x);
+		cardRef.current.style.setProperty("--cursor-y", y);
+		bgRef.current.style.setProperty("top", y);
+		bgRef.current.style.setProperty("left", x);
+	}, []);
 
 	return (
 		<article

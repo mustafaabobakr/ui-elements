@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import styles from "./CheckBox.module.css";
 
 interface CheckBoxProps {
@@ -15,18 +15,19 @@ const CheckBox: React.FC<CheckBoxProps> = ({ isOn, handleToggle, onColor, offCol
 				checked={isOn}
 				onChange={handleToggle}
 				className={styles["switch-checkbox"]}
-				id={`switch`}
+				id={"switch"}
 				type="checkbox"
+				aria-label="Toggle"
 			/>
-			<label style={{ background: isOn ? onColor : offColor }} className={styles["switch-label"]} htmlFor={`switch`}>
-				<span className={styles[`switch-button`]} />
+			<label style={{ background: isOn ? onColor : offColor }} className={styles["switch-label"]} htmlFor={"switch"}>
+				<span className={styles["switch-button"]} />
 			</label>
 		</>
 	);
 };
 
 CheckBox.displayName = "CheckBox";
-export default memo(CheckBox, (prevProps: { isOn: boolean }, nextProps: { isOn: boolean }) => {
+export default React.memo(CheckBox, (prevProps: { isOn: boolean }, nextProps: { isOn: boolean }) => {
 	// Only re-render when 'isOn' changes
 	return prevProps.isOn === nextProps.isOn;
 });

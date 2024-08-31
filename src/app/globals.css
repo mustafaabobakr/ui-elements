@@ -6,18 +6,17 @@
 	--foreground-rgb: 0, 0, 0;
 	--background-start-rgb: 214, 219, 220;
 	--background-end-rgb: 255, 255, 255;
+	--root-bg: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+	--gradient-section: radial-gradient(circle closest-side, rgb(87, 19, 137), transparent);
 }
+html,
 body {
 	cursor: default;
 	color: rgb(var(--foreground-rgb));
-	background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+	background: var(--root-bg);
 	min-height: 100vh;
 }
 
-body {
-	--geist-foreground: #000;
-	background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0px, var(--geist-foreground) 50%);
-}
 .App {
 	font-family: sans-serif;
 	text-align: center;

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, memo, RefObject, ElementRef, useRef } from "react";
+import { type ElementRef, type RefObject, memo, useEffect, useRef, useState } from "react";
 import styles from "./SegmentedControl.module.css";
 
 interface SegmentedControlProps {
@@ -47,6 +47,11 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({ name, segments, cal
 	const componentReady = useRef<ElementRef<"article">>(null);
 	const [activeIndex, setActiveIndex] = useState<number | undefined>(defaultIndex);
 
+	const onInputChange = (value: string, index: number) => {
+		setActiveIndex(index);
+		callback(value, index);
+	};
+
 	// Determine when the component is "ready"
 	useEffect(() => {
 		if (componentReady.current) {
@@ -77,11 +82,6 @@ const SegmentedControl: React.FC<SegmentedControlProps> = ({ name, segments, cal
 		style.setProperty("--highlight-width", `${offsetWidth}px`);
 		style.setProperty("--highlight-x-pos", `${offsetLeft}px`);
 	}, [activeIndex, callback, controlRef, segments]);
-
-	const onInputChange = (value: string, index: number) => {
-		setActiveIndex(index);
-		callback(value, index);
-	};
 
 	return (
 		<article data-label="SegmentedControl" className={styles["controls-container"]} ref={controlRef}>

@@ -1,27 +1,22 @@
-"use client";
-import React, { useEffect, useState, memo, useCallback, CSSProperties } from "react";
-import NextImage, { ImageProps, StaticImageData } from "next/image";
+import { type CSSProperties, type FC, type ImgHTMLAttributes, memo, useCallback, useEffect, useState } from "react";
+import { imagePlaceholderBase64 } from "./placeholder";
 import { placeholderImage } from "./utils";
 
-interface StaticRequire {
-	default: StaticImageData;
-}
-type StaticImport = StaticRequire | StaticImageData;
-
-export interface PictureProps extends Omit<ImageProps, "src"> {
-	src: string | StaticImport | undefined | null;
+export interface PictureProps extends ImgHTMLAttributes<HTMLImageElement> {
+	sources?: { srcSet: string; type?: string }[];
 	placeholderImageBorderRadius?: number;
 	placeholderImageBackground?: CSSProperties["backgroundColor"];
 }
 
-const Picture: React.FC<PictureProps> = ({
-	src = "/image_placeholder.svg",
+const Picture: FC<PictureProps> = ({
+	sources,
+	src = imagePlaceholderBase64,
 	placeholderImageBorderRadius,
 	placeholderImageBackground,
 	...props
 }: PictureProps) => {
-	const widthToUse = props.width || 200;
-	const heightToUse = props.height || 200;
+	const widthToUse = props.width ?? 20;
+	const heightToUse = props.height ?? 20;
 	const loadingImagePlaceholder = placeholderImage(
 		widthToUse as number,
 		heightToUse as number,
@@ -34,84 +29,48 @@ const Picture: React.FC<PictureProps> = ({
 	const [imageHeight, setImageHeight] = useState(heightToUse);
 	const [imageError, setImageError] = useState<boolean>(false);
 
-	const onLoadingComplete = () => {
-		// set the image src to correct one
-		setImageSrc(src);
-	};
-
-	// handle error
 	const onError = useCallback(() => {
 		setImageError(true);
-		setImageSrc("/image_placeholder.svg");
-		setImageWidth(imageWidth || 200);
-		setImageHeight(imageHeight || 200);
-	}, [imageHeight, imageWidth]);
+		setImageSrc(imagePlaceholderBase64);
+		setImageWidth(imageWidth ?? 20);
+		setImageHeight(imageHeight ?? 20);
+	}, []);
 
-	// re-render the component if src changes
 	useEffect(() => {
 		setImageError(false);
-		setImageSrc(loadingImagePlaceholder);
+		setImageSrc(src);
 		setImageWidth(widthToUse);
 		setImageHeight(heightToUse);
 	}, [src]);
 
-	if (!imageSrc || imageSrc === "/image_placeholder.svg") {
-		return (
-			<NextImage
-				loading="lazy"
-				priority={false}
-				decoding={"async"}
-				placeholder="empty"
-				draggable="false"
+	return (
+		<picture data-testid='Picture' data-error={imageError}>
+			{sources?.map((source) => (
+				<source key={source.srcSet} srcSet={source.srcSet} type={source.type} />
+			))}
+			<img
+				loading='lazy'
+				draggable='false'
+				decoding={props.decoding ?? "async"}
+				width={imageWidth}
+				height={imageHeight}
 				{...props}
-				src={imageSrc ?? "/image_placeholder.svg"}
-				alt={props.alt || "Error Image"}
-				{...(imageError?.toString() && { "data-error": "Error image" })}
-				// conditionally add width if fill !== true
-				{...(props.fill !== true && { width: imageWidth })}
-				{...(props.fill !== true && { height: imageHeight })}
+				src={imageSrc}
+				alt={props.alt ?? "placeholder alt"}
 				onError={onError}
-				onLoadingComplete={onLoadingComplete}
 				style={{
-					objectFit: "contain",
-					//  conditionally add borderRadius if fill !== true
-					...(props.fill !== true && {
-						width: `${imageWidth}px`,
-						height: `${imageHeight}px`,
-						maxWidth: "100%",
-						maxHeight: "500px",
-					}),
+					userSelect: "none",
+					objectFit: imageError ? "contain" : undefined,
+					maxWidth: "100%",
+					width: imageWidth,
+					height: imageHeight,
 					...props.style,
 				}}
 			/>
-		);
-	}
-
-	return (
-		<NextImage
-			loading="lazy"
-			priority={false}
-			draggable="false"
-			decoding={props.decoding || "async"}
-			placeholder="empty"
-			{...props}
-			src={imageSrc}
-			alt={props.alt || "Image"}
-			// conditionally add width if fill !== true
-			{...(props.fill !== true && { width: imageWidth })}
-			{...(props.fill !== true && { height: imageHeight })}
-			onError={onError}
-			onLoadingComplete={onLoadingComplete}
-			style={{
-				...props.style,
-			}}
-		/>
+		</picture>
 	);
 };
 
 Picture.displayName = "Picture";
-// memoize the component to avoid unnecessary re-renders based on src
 
-export default memo(Picture, (prevProps, nextProps) => {
-	return prevProps.src === nextProps.src;
-});
+export default memo(Picture);

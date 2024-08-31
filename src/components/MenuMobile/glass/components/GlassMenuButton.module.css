@@ -1,0 +1,8 @@
+.button {
+	@apply pointer-events-auto outline-none border-none;
+	@apply flex items-center gap-2;
+	@apply px-3 py-2 rounded-[8px];
+	@apply text-sm font-semiBold text-white/60;
+	@apply group-aria-expanded:bg-white/20;
+	@apply hover:bg-white/20 hover:text-white active:scale-95 scale-100 transition-all;
+}

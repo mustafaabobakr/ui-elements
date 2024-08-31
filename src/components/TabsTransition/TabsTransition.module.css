@@ -1,0 +1,49 @@
+.wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: fit-content;
+	margin: 0 auto;
+	background-color: #efefef;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+.list {
+	position: relative;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	gap: 8px;
+}
+
+.list-overlay {
+	background: #ffffff;
+}
+
+.button {
+	display: flex;
+	height: 42px;
+	align-items: center;
+	gap: 8px;
+	border-radius: 8px;
+	padding: 16px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #000;
+	text-decoration: none;
+}
+
+.button.button-overlay {
+	color: #050505;
+}
+
+.clip-path-container {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	overflow: hidden;
+	transition: clip-path 0.25s ease;
+	clip-path: inset(0px 75% 0px 0% round 17px);
+}

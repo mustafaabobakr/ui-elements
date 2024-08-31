@@ -1,5 +1,6 @@
 import { Metadata } from "next/types";
 import RenderAll from "./renderAll";
+import Dock from "@/components/MacOS/Dock/Dock";
 
 export const metadata: Metadata = {
 	title: "Modern React-TS UI Elements",
@@ -13,8 +14,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
 	return (
-		<main className="flex flex-col items-center justify-between p-24">
+		<main className="flex flex-col items-center justify-between p-24 [background-image:var(--gradient-section)] ima">
 			<RenderAll />
+			<Dock />
 		</main>
 	);
 }
