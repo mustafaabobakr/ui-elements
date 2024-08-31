@@ -1,5 +1,7 @@
 "use client";
-import { type ElementRef, memo, useRef, useState } from "react";
+import React, { type ElementRef, memo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { AnimatePresence, m } from "framer-motion";
 import CardHovered from "@/components/CardHovered/CardHovered";
 import CardShadowAnimated from "@/components/CardShadowAnimated/CardShadowAnimated";
 import CardWithShadow from "@/components/CardWithShadow";
@@ -11,9 +13,9 @@ import TabsTransition from "@/components/TabsTransition/TabsTransition";
 import ThemeSwitcher from "@/components/switch/ThemeSwitcher";
 import { fileSystemNodes } from "@/components/FilesystemItem/example";
 import FileSystem from "@/components/FilesystemItem/FileSystem";
-import { AnimatePresence, m } from "framer-motion";
 
 const RenderAll: React.FC = () => {
+  const router = useRouter();
   const [selectedValue1, setSelectedValue1] = useState("complete");
   const [selectedValue2, setSelectedValue2] = useState("second");
   const [checked, setChecked] = useState(true);
@@ -23,6 +25,10 @@ const RenderAll: React.FC = () => {
   const week1Ref = useRef<ElementRef<"div">>(null);
   const week2Ref = useRef<ElementRef<"div">>(null);
   const week3Ref = useRef<ElementRef<"div">>(null);
+
+  const goToPricingPage = React.useCallback(() => {
+    router.push("/pricing");
+  }, []);
 
   return (
     <>
@@ -121,17 +127,17 @@ const RenderAll: React.FC = () => {
       </CardHovered>
       <CardShadowAnimated />
       <section
+        data-testid="GlassMenu_container"
         className={
           "my-4 flex justify-center items-center w-full py-12 bg-black-600 rounded-xl"
         }
       >
-        <GlassMenu />
+        <GlassMenu onPricingClick={goToPricingPage} />
       </section>
       <section>
         <div
           data-ref={"https://tryklack.com/?ref=dailydev"}
           className="rounded-3xl border-t border-orange-50 px-3 py-3 shadow-2xl shadow-stone-800/30 backdrop-blur-2xl border-opacity-30 bg-orange-50 bg-opacity-80  right-11 top-24 z-10  w-72 sm:block xl:-right-9"
-          style={{ transform: "translateY(3.71644px)" }}
         >
           <ul className="space-y-0.5 text-[15px] font-medium">
             <li className="group flex cursor-default select-none items-center justify-between px-3 rounded-lg py-1 transition duration-100 ease-out first:rounded-t-xl last:rounded-b-xl hover:bg-stone-800 hover:bg-opacity-15 hover:text-orange-50">
