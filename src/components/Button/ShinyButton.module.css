@@ -1,0 +1,32 @@
+@property --angle-to-the-dangle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
+.button {
+  border: 2px solid;
+  border-image-slice: 2;
+  border-image-source: conic-gradient(
+    from var(--angle-to-the-dangle),
+    transparent 0deg,
+    white 20deg,
+    transparent 40deg
+  );
+  animation: rotateColors 4s linear infinite;
+  background-color: oklch(59% 56% 259deg);
+  color: white;
+  padding: 0.5rem 1rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+
+@keyframes rotateColors {
+  0% {
+    --angle-to-the-dangle: 0deg;
+  }
+  100% {
+    --angle-to-the-dangle: 360deg;
+  }
+}

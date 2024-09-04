@@ -13,6 +13,7 @@ import TabsTransition from "@/components/TabsTransition/TabsTransition";
 import ThemeSwitcher from "@/components/switch/ThemeSwitcher";
 import { fileSystemNodes } from "@/components/FilesystemItem/example";
 import FileSystem from "@/components/FilesystemItem/FileSystem";
+import ShinyButton from "@/components/Button/ShinyButton";
 
 const RenderAll: React.FC = () => {
   const router = useRouter();
@@ -133,6 +134,7 @@ const RenderAll: React.FC = () => {
         }
       >
         <GlassMenu onPricingClick={goToPricingPage} />
+        <ShinyButton>Buy Now</ShinyButton>
       </section>
       <section>
         <div
